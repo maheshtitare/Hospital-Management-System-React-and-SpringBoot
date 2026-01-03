@@ -3,9 +3,8 @@ package com.example.demo.dto;
 import java.io.Serializable;
 import java.util.Date;
 
-import com.example.demo.entity.Patient;
-import com.example.demo.entity.Problem;
 import com.example.demo.entity.enums.ProblemStatus;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,10 +17,13 @@ import lombok.ToString;
 @ToString
 public class ProblemDto implements Serializable {
 
-	private String problemName;
-	private String problemDetail;
-	private ProblemStatus problemStatus;
-	private Long pId;
-	private int status;
-	private Date creationDate;
+    private String problemName;
+    private String problemDetail;
+    private ProblemStatus problemStatus;
+
+    @JsonProperty("pId")
+    private Long pId;
+
+    private int status;
+    private Date creationDate;
 }
