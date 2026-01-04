@@ -13,7 +13,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -31,32 +30,32 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name="aaproblem")
-public class Problem{
-	
-	@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AA_PATIENT_SEQ")
-    @SequenceGenerator(sequenceName = "AA_PATIENT_SEQ", allocationSize = 1, name = "AA_PATIENT_SEQ")
-	@Column(name = "problemid")
-	private Long problemid;
-	private String problemName;
-	private String problemDetail;
+@Table(name = "aaproblem")
+public class Problem {
 
-	@Enumerated(EnumType.STRING)
-	private ProblemStatus problemStatus;
-	private int status;
-	private Long patientid;
-	private Long admissionid;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "problemid")
+    private Long problemid;
+
+    private String problemName;
+    private String problemDetail;
+
+    @Enumerated(EnumType.STRING)
+    private ProblemStatus problemStatus;
+
+    private int status;
+    private Long patientid;
+    private Long admissionid;
 
     @Temporal(TemporalType.TIMESTAMP)
     Date creationDate;
-	
-	@NotNull
+
+    @NotNull
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_id")
     private Patient patient;
-	
-	
-	@OneToMany(mappedBy = "problem", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Receipe> receipes;
+
+    @OneToMany(mappedBy = "problem", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Receipe> receipes;
 }

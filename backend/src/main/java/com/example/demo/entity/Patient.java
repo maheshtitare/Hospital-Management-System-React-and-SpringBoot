@@ -30,8 +30,7 @@ import java.util.List;
 public class Patient {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AA_PATIENT_SEQ")
-	@SequenceGenerator(sequenceName = "AA_PATIENT_SEQ", allocationSize = 1, name = "AA_PATIENT_SEQ")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "patientid")
 	private Long patientid;
 	private String name;

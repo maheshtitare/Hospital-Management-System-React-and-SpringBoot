@@ -24,8 +24,7 @@ import lombok.ToString;
 public class Receipe {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AA_PATIENT_SEQ")
-    @SequenceGenerator(sequenceName = "AA_PATIENT_SEQ", allocationSize = 1, name = "AA_PATIENT_SEQ")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "receipeid")
     private Long receipeid;
 
